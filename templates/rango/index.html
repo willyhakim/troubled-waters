@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <h1>Rango says...Hello World!</h1>
+        {% if categories %}
+        	<ul>
+        		{% for category in categories %}
+        		<li>{{category.name}}</li>
+        		{% endfor %}
+        	</ul>
+        	{% else %}
+        	<strong>There are no categories present!</strong>
+        {% endif %}
+
+        hello world! <strong>{{ boldmessage }}</strong><br />
+        <a href="/rango/about/">About</a><br />
+    </body>
+
+</html>
