@@ -10,7 +10,7 @@
         {% if categories %}
         	<ul>
         		{% for category in categories %}
-        		<li>{{category.name}}</li>
+        		<li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
         		{% endfor %}
         	</ul>
         	{% else %}
@@ -19,6 +19,7 @@
 
         hello world! <strong>{{ boldmessage }}</strong><br />
         <a href="/rango/about/">About</a><br />
+        <a href="/rango/add_category/">Add a New Category</a><br />
     </body>
 
 </html>
