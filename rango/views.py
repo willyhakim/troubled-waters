@@ -1,5 +1,7 @@
 #rango/views.py
-from django.htpp import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from rango.models import Category, Page
@@ -122,7 +124,7 @@ def user_login( request):
 				login(request, user)
 				return HttpResponseRedirect('/rango/')
 			else:
-				#an inactive account was used - no loggin in!
+				#an inactive account was used - no logging in!
 				return HttpResponse("Your account is disabled")
 		else:
 			#Bad bad user! kick their butt to the curb!
@@ -131,7 +133,10 @@ def user_login( request):
 
 	else:
 		#Not a request.Post! Oh gee, it is a get. Let's pass the form
-		return render(request. 'rango/login.html', {})	
+		return render(request, 'rango/login.html', {})
 
-
-
+@login_required
+def user_logout(request):
+	"""Logging out is very important"""
+	logout(request)
+	return HttpResponseRedirect('/rango/')
